@@ -1,0 +1,90 @@
+.Assignments {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #ffffff;
+    color: #333;
+  }
+  
+  h2 {
+    text-align: center;
+    font-size: 28px;
+    color: #060708;
+  }
+  
+  .Current-Assignments, .Upcoming-Assignments, .Completed-Assignments {
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f4f9fc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #4a6c94;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  th, td {
+    text-align: left;
+    padding: 12px 20px;
+  }
+  
+  th {
+    background-color: #cce0ff;
+    color: #4a6c94;
+    font-weight: bold;
+  }
+  
+  td {
+    background-color: #ffffff;
+  }
+  
+  tr:nth-child(even) td {
+    background-color: #f9f9f9;
+  }
+  
+  td:first-child, td:nth-child(2), td:nth-child(3) {
+    width: 25%;
+  }
+  
+  td:last-child {
+    width: 20%;
+  }
+  
+  .Completed-Assignments table {
+    background-color: #e6f7ff;
+  }
+  
+  .Completed-Assignments td {
+    font-weight: bold;
+  }
+  
+  .Upcoming-Assignments table {
+    background-color: #e6f2ff;
+  }
+  
+  .Current-Assignments table {
+    background-color: #d1e8ff;
+  }
+  
+  @media (max-width: 768px) {
+    th, td {
+      padding: 8px 12px;
+    }
+  
+    h2 {
+      font-size: 24px;
+    }
+  
+    h3 {
+      font-size: 20px;
+    }
+  }
+  

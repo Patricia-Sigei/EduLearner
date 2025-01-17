@@ -1,0 +1,44 @@
+.Heading {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .Heading h2 {
+    font-size: 2rem;
+    color: #333;
+  }
+  
+  .Heading h3 {
+    font-size: 1.5rem;
+    color: #090a0a;
+  }
+  
+  .Lesson-Table {
+    display: flex;
+    justify-content: center;
+  }
+  
+  table {
+    border-collapse: collapse;
+    width: 80%;
+  }
+  
+  th, td {
+    border: 1px solid #ccc;
+    padding: 12px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #76c7f7;
+    color: white;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  tr:hover {
+    background-color: #e0e0e0;
+  }
+  

@@ -1,0 +1,45 @@
+.logIn {
+    margin: 20px 0;
+  }
+  
+  input {
+    width: 50%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .login-btn {
+    width: 20%;
+    padding: 12px;
+    background-color: #76c7f7; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 10px 0;
+  }
+  
+  .login-btn:hover {
+    background-color: #5ba9d7;
+  }
+  
+  .links {
+    text-align: center;
+  }
+  
+  .links a {
+    color: #0f0f0f;
+    text-decoration: none;
+  }
+  
+  .links a:hover {
+    text-decoration: underline;
+  }
+  
+  .forgot-password {
+    margin-right: 15px;
+  }
+  
