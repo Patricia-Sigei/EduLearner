@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #76c7f7;
+    /* background-color: #cae2f1; */
     padding: 10px 20px;
   }
   
@@ -16,7 +16,7 @@
   .navbar-items li {
     margin-right: 20px;
     font-size: 1.2rem;
-    color: white;
+    color: rgb(19, 18, 18);
     cursor: pointer;
   }
   
@@ -36,9 +36,9 @@
   .search-box input {
     border: none;
     outline: none;
-    padding: 8px;
-    width: 100px; 
-    height: 20px;
+    padding: 5px;
+    width: 80px; 
+    height: 10px;
   }
   
   .search-icon {
