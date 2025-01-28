@@ -1,10 +1,39 @@
-import React from 'react'
-import './Lessons.css'
+import React, { useEffect, useState } from 'react';
+import './Lessons.css';
 
-function Lessons() {
+function Lessons({ userRole }) {
+  const [lessons, setLessons] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Fetch lessons from the backend
+    fetch('/lessons')
+      .then((response) => response.json())
+      .then((data) => {
+        setLessons(data);
+        setIsLoading(false);
+      });
+  }, []);
+
+  const handleDelete = (id) => {
+    // Send DELETE request to backend
+    fetch(`/lessons/${id}`, { method: 'DELETE' })
+      .then(() => {
+        setLessons(lessons.filter((lesson) => lesson.id !== id));
+      });
+  };
+
+  const handleEdit = (id) => {
+    // Open a modal or form for editing lesson (to be implemented)
+  };
+
+  const handleCreate = () => {
+    // Open a form for creating a new lesson (to be implemented)
+  };
+
   return (
     <div>
-        <h2>This Week's Lessons</h2>
+      <h2>This Week's Lessons</h2>
       <div className="Weekly-Lessons">
         <table>
           <thead>
@@ -18,35 +47,44 @@ function Lessons() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>0800hrs - 1000hrs</td>
-              <td>CSS101 - Fundamentals of Computing<br />L Block Room 12</td>
-              <td>CSS104 - Object Oriented Programming<br />L Block Room 14</td>
-              <td>CSS103 - Discrete Structures I<br />L Block Room 15</td>
-              <td>CSS102 - Linear Algebra<br />L Block Room 10</td>
-              <td>CSS105 - Electrical Principles<br />L Block Room 16</td>
-            </tr>
-            <tr>
-              <td>1100hrs - 1300hrs</td>
-              <td>CSS105 - Electrical Principles<br />L Block Room 16</td>
-              <td>CSS101 - Fundamentals of Computing<br />L Block Room 12</td>
-              <td>CSS106 - Discrete Structures II<br />L Block Room 13</td>
-              <td>CSS102 - Linear Algebra<br />L Block Room 10</td>
-              <td>CSS104 - Object Oriented Programming<br />L Block Room 14</td>
-            </tr>
-            <tr>
-              <td>1400hrs - 1600hrs</td>
-              <td>CSS102 - Linear Algebra<br />L Block Room 10</td>
-              <td>CSS106 - Discrete Structures II<br />L Block Room 13</td>
-              <td>CSS105 - Electrical Principles<br />L Block Room 16</td>
-              <td>CSS103 - Discrete Structures I<br />L Block Room 14</td>
-              <td>CSS101 - Fundamentals of Computing<br />L Block Room 12</td>
-            </tr>
+            {isLoading ? (
+              <tr>
+                <td colSpan="6">Loading...</td>
+              </tr>
+            ) : (
+              // Loop through the lessons and display them
+              ['0800hrs - 1000hrs', '1100hrs - 1300hrs', '1400hrs - 1600hrs'].map((timeSlot, index) => (
+                <tr key={index}>
+                  <td>{timeSlot}</td>
+                  {['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'].map((day, dayIndex) => (
+                    <td key={dayIndex}>
+                      {lessons
+                        .filter((lesson) => lesson.time_slot === timeSlot && lesson.day_of_week === day)
+                        .map((lesson) => (
+                          <div key={lesson.unit}>
+                            <span>{lesson.unit_title}</span>
+                            {userRole === 'teacher' && (
+                              <>
+                                <button onClick={() => handleEdit(lesson.id)}>Edit</button>
+                                <button onClick={() => handleDelete(lesson.id)}>Delete</button>
+                              </>
+                            )}
+                          </div>
+                        ))}
+                    </td>
+                  ))}
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
+
+        {userRole === 'teacher' && (
+          <button onClick={handleCreate}>Create Lesson</button>
+        )}
       </div>
     </div>
-  )
+  );
 }
 
-export default Lessons
+export default Lessons;
